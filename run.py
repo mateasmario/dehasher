@@ -1,17 +1,30 @@
-import GenerateSpecificLengthStrings
+import Base
+import Splash
 
-def main():
-    variant = ""
-    chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=!@#$%^&*()_+{}[]:\";'|\\<>,.?/~ "
+if __name__ == "__main__":
+    # Run a system clear command, depending on your OS
+    Splash.ClearScreen()
 
-    word = input("Word: ")
+    # Output the splash title
+    Splash.Title()
 
-    found = False
+    # Output the current version of the script
+    Splash.Version()
 
-    if found == False:
-        for length in range(1, 8):
-            res = GenerateSpecificLengthStrings.do(word, length, chars)
-            if res == True:
-                break
+    # Check for updates
+    CheckVersion.do()
 
-main()
+    # Output the splash description
+    Splash.Description()
+
+    # Output the list of dependencies
+    Splash.Dependencies()
+
+    # Output the very hard and complex tutorial on how to use the dehasher
+    Splash.Usage()
+
+    # Delete the "temp/result" file, if it exists
+    Base.clean()
+
+    # Run the main script (the one that does the "dehashing")
+    Base.main()
