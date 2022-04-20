@@ -28,7 +28,7 @@ Firstly, open a terminal and navigate to the root folder of the source code. The
 Type in a hashed text you want to decrypt, and wait for the magic to happen. The script automatically identifies the hashing method, based on the input's length.
 #### Multiprocessing
 In order to improve the overall speed of the script, Dehasher uses **multiprocessing**, meaning that it is going to handle two possible text length values on each process, creating a total of 4 processes. First process will try and find a possible hash for lengths (1, 2), the second one for (3, 4), and so on.  
-Dehasher is going to automatically kill all its child processes, after finding a match.
+Dehasher is going to automatically kill all its child processes, after finding a match.  
 **Known issue:** Dehasher won't automatically kill your processes if nothing was found. You need to **manually** stop them (see below how).
 #### Waiting too much for a dehashing?
 If you feel like waiting too much for a dehashing, **terminate** the main process by pressing `CTRL` + `C`.
