@@ -1,1 +1,4 @@
 This is a "dehasher" tool that looks through all the word combinations, hashes them and outputs the raw word that has the same hash as the given input.
+Dehashing works on the following hashing methods: MD5, SHA1, SHA224, SHA256, SHA384 and SHA512.
+The dehasher uses Python's hashlib module. More info can be found at https://docs.python.org/3/library/hashlib.html
+For any questions or suggestions, feel free to send an e-mail at mateasmario@aol.com.

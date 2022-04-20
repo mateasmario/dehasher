@@ -29,7 +29,7 @@ def Dependencies():
 
 def Usage():
     print(colored("Usage", "yellow"))
-    print("Type in the MD5 hash of the text you want to decrypt, and wait for the magic to happen...")
+    print("Type in a hashed text you want to decrypt, and wait for the magic to happen. The script automatically identifies the hashing method, based on the input's length.")
     print("")
 
 def ClearScreen():
