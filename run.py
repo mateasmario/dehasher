@@ -1,5 +1,6 @@
 import Base
 import Splash
+import Versioning
 
 if __name__ == "__main__":
     # Run a system clear command, depending on your OS
@@ -12,7 +13,7 @@ if __name__ == "__main__":
     Splash.Version()
 
     # Check for updates
-    CheckVersion.do()
+    Versioning.CheckVersion()
 
     # Output the splash description
     Splash.Description()

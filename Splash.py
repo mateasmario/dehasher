@@ -1,5 +1,6 @@
 import pyfiglet
 import os
+import Versioning
 from termcolor import colored
 
 def Title():
@@ -7,8 +8,7 @@ def Title():
     print (colored(word, 'yellow'))
 
 def Version():
-    with open("CurrentVersion") as f:
-        version = f.read()
+    version = Versioning.GetVersion()
     print("Current version: " + version)
 
 def Description():
