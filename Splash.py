@@ -14,7 +14,7 @@ def Version():
 def Description():
     print(colored("Main Description", "yellow"))
     with open(os.path.join("splash", "description"), "r") as f:
-        print(f.read())
+        print(f.read() + "\n")
 
 def Dependencies():
     print(colored("Dependencies", "yellow"))
@@ -25,7 +25,7 @@ def Dependencies():
             # 'pip freeze > requirements.txt' will add some nasty newlines between the dependencies, and we're just trying to NOT print them >:(
             if "=" in ln:
                 print(ln)
-    print("These dependencies can be easily installed using a package manager like pip, directly from the already provided requirements file: 'pip install -r requirements'")
+    print("These dependencies can be easily installed using a package manager like pip, directly from the already provided requirements file: 'pip install -r requirements'\n")
 
 def Usage():
     print(colored("Usage", "yellow"))
