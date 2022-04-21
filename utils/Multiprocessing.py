@@ -1,42 +1,32 @@
-import GenerateSpecificLengthStrings
+import utils.Hashing
 from multiprocessing import Process
 import os
 import time
 
-def clean():
+def Clean():
     file = os.path.join("temp", "result")
     if (os.path.exists(file)):
         os.remove(file)
 
-def main():
+def CreateProcesses():
     variant = ""
     chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=!@#$%^&*()_+{}[]:\";'|\\<>,.?/~ "
 
     word = input(">>> ")
 
-    method = ""
+    method = utils.Hashing.Identify(word)
 
-    if len(word) == 128:
-        method = "SHA512"
-    elif len(word) == 96:
-        method = "SHA384"
-    elif len(word) == 64:
-        method = "SHA256"
-    elif len(word) == 56:
-        method = "SHA224"
-    elif len(word) == 40:
-        method = "SHA1"
-    elif len(word) == 32:
-        method = "MD5"
-    else:
+    if method is None:
         print("[ERROR] No hashing method identified.")
         exit(1)
     print("[INFO] Identified " + method + " hashing.")
 
+    print("[INFO] Starting to look for the matching word. This can take up to a few hours, depending on the length of the word.")
+
     processes = []
 
     for length in range(1, 9, 2):
-        proc = Process(target=GenerateSpecificLengthStrings.doTwice, args=(method, word, length, length+1, chars))
+        proc = Process(target=utils.Hashing.GenerateTwoLengths, args=(method, word, length, length+1, chars))
         processes.append(proc)
         proc.start()
 
@@ -45,5 +35,9 @@ def main():
             # kill all processes
             for proc in processes:
                 proc.kill()
-            break
+            exit(1)
         time.sleep(2)
+
+    for proc in processes:
+        proc.join()
+    exit(2)

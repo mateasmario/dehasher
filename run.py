@@ -1,31 +1,31 @@
-import Base
-import Splash
-import Versioning
+import utils.Multiprocessing
+import utils.Splash
+import utils.Versioning
 
 if __name__ == "__main__":
     # Run a system clear command, depending on your OS
-    Splash.ClearScreen()
+    utils.Splash.ClearScreen()
 
     # Output the splash title
-    Splash.Title()
+    utils.Splash.Title()
 
     # Output the current version of the script
-    Splash.Version()
+    utils.Splash.Version()
 
     # Check for updates
-    Versioning.CheckVersion()
+    utils.Versioning.CheckVersion()
 
     # Output the splash description
-    Splash.Description()
+    utils.Splash.Description()
 
     # Output the list of dependencies
-    Splash.Dependencies()
+    utils.Splash.Dependencies()
 
     # Output the very hard and complex tutorial on how to use the dehasher
-    Splash.Usage()
+    utils.Splash.Usage()
 
     # Delete the "temp/result" file, if it exists
-    Base.clean()
+    utils.Multiprocessing.Clean()
 
-    # Run the main script (the one that does the "dehashing")
-    Base.main()
+    # Run the script that waits for user input, creates the processes needed and tries to "dehash" the user input
+    utils.Multiprocessing.CreateProcesses()
