@@ -48,12 +48,9 @@ def Generate(method, word, length, chars) -> bool:
     for i in range(0, length):
         ranges.append(range(0, len(chars)))
 
-    for xs in itertools.product(*ranges):
-        if found == True:
-            break
-        possibility = ""
-        for i in range(0, length):
-            possibility += chars[xs[i]]
+    prod = itertools.product(chars, repeat=length)
+    for possibility in prod:
+        possibility = ''.join(possibility)
         if Hash(method, possibility) == word:
             finish_time = time.time()
             print(colored("[INFO] Found match: " + possibility + "\n[INFO] Finish time: " + str(finish_time - start_time) + " seconds", "green"))
